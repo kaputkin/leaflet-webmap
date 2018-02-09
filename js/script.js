@@ -7,7 +7,7 @@ var map = L.map('my-map').setView([40.713435,-73.971291], 12);
   	ext: 'png'
   }).addTo(map);
 
-
+  
 // how to add a single marker using L.marker()
 // var chrisPizza = pizzaData[0];
 //
@@ -24,4 +24,3 @@ treeData.forEach(function(treeObject) {
   L.circleMarker(latlon, options).addTo(map)
       // .bindPopup(pizzaObject.name + ' likes to eat at ' +  pizzaObject.pizzaShop);
 });
- 
