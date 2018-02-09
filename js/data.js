@@ -1,4 +1,3 @@
-
 var treeData = [
 {
 "id": 2180,
@@ -19,7 +18,7 @@ var treeData = [
 "stump_diam": 0,
 "health": "Good",
 "Latitude": 40.74325795,
-"longitude": -73.74949461 
+"longitude": -73.74949461
 },
 {
 "id": 2246,
