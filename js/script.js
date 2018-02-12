@@ -7,8 +7,28 @@ var map =
   	maxZoom: 20,
   	ext: 'png'}).addTo(map);
 
-var myhouse = L.circleMarker([40.697690, -73.910279]).bindPopup('My House');
+//create house icon
+var houseIcon = L.icon({
+    iconUrl: 'http://www.housingplusdevelopment.com/images/house.png',
+    iconSize: [38, 95], // size of the icon
+    popupAnchor: [0,-15]
+    });
 
+//variable for gif in popup
+var customPopup = "My Home<br/><img src='https://media.giphy.com/media/lnQuWKUUt0kN2/giphy.gif' alt='maptime logo gif' width='350px'/>";
+
+//sets width of gif and assigns classnames for CSS
+var customOptions =
+    {
+    'maxWidth': '900',
+    'className' : 'custom'
+  };
+
+//adds house circle and passes custom icon and custom popup with options
+// L.marker([43.64701, -79.39425], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
+var myhouse = L.circleMarker([40.697690, -73.910279], {icon: houseIcon}).bindPopup(customPopup, customOptions).addTo(map);
+
+var treeArray = []  // empty array
 treeData.forEach(function(treeObject) {
   var latlon = [treeObject.Latitude, treeObject.longitude];
   var options = {
@@ -17,11 +37,17 @@ treeData.forEach(function(treeObject) {
     fillColor: 'rgb(18, 226, 33)',
   };
 
-var trees = L.circleMarker(latlon, options)});
+treeArray.push(L.circleMarker(latlon, options).bindPopup(treeData.health))
+  });
 
-var layers = {
-  "Trees": trees,
+var trees = treesLayerGroup = L.layerGroup(treeArray).addTo(map);
+
+var treelayer = {
+  "Trees": trees
+};
+
+var houselayer = {
   "My House": myhouse
 };
 
-L.control.layers(layers).addTo(map);
+L.control.layers(houselayer).addTo(map);
