@@ -31,13 +31,14 @@ var myhouse = L.circleMarker([40.697690, -73.910279], {icon: houseIcon}).bindPop
 var treeArray = []  // empty array
 treeData.forEach(function(treeObject) {
   var latlon = [treeObject.Latitude, treeObject.longitude];
+  var popup = [treeObject.health];
   var options = {
     radius: 5,
     stroke: false,
     fillColor: 'rgb(18, 226, 33)',
   };
 
-treeArray.push(L.circleMarker(latlon, options).bindPopup(treeData.health))
+treeArray.push(L.circleMarker(latlon, options).bindPopup(popup))
   });
 
 var trees = treesLayerGroup = L.layerGroup(treeArray).addTo(map);
